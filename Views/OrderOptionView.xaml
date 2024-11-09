@@ -1,0 +1,66 @@
+﻿<Window x:Class="KIOSK_LITE.Views.OrderOptionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KIOSK_LITE.Views"
+        mc:Ignorable="d"
+        Title="OrderOptionView" Height="700" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        WindowStyle="None"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="0 20 0 0" Width="300" TextAlignment="Center" Text="옵션선택" Background="#00264B" Foreground="white" VerticalAlignment="Center"  HorizontalAlignment="Center" FontFamily="Arial Black" FontSize="24"/>
+        <TextBlock Grid.Row="1" Text="{Binding MENU_NM}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial Black" FontSize="32"/>
+        <ScrollViewer Grid.Row="2" ScrollViewer.PanningMode="VerticalOnly">
+            <ItemsControl ItemsSource="{Binding OptionList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding OP_NM}" FontFamily="NanumGothic" FontWeight="Bold" FontSize="25" Margin="15 0 0 0"/>
+                            <TextBlock Grid.Column="1" Text="{Binding PRICE , StringFormat=\\\{0:N0\}}" FontFamily="NanumGothic" FontWeight="Bold" FontSize="25"/>
+                            <CheckBox Grid.Column="2" IsChecked="{Binding CHK}" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+        </ScrollViewer>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="합계" TextAlignment="Right" VerticalAlignment="Center" FontFamily="NanumGothic" FontWeight="Bold" FontSize="30" />
+            <TextBlock Grid.Column="1" Text="{Binding TOT_PRICE , StringFormat=\\\{0:N0\}}" VerticalAlignment="Center" TextAlignment="Left" Margin="20 0 0 0" FontFamily="NanumGothic" FontWeight="Bold" FontSize="30" />
+        </Grid>
+        
+        <Grid Grid.Row="4" Margin="0 0 0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource RoundButtonStyle}" Grid.Column="0" Click="btnOk_Click" Content="확인" Margin="210 0 10 0" FontFamily="Arial Black" FontWeight="Bold" FontSize="20" Background="DarkGreen" Foreground="White"/>
+            <Button Style="{StaticResource RoundButtonStyle}" Grid.Column="1" Click="btnClose_Click" Content="취소" Margin="10 0 210 0" FontFamily="Arial Black" FontWeight="Bold" FontSize="20" Background="DarkRed" Foreground="White"/>
+        </Grid>
+    </Grid>
+</Window>

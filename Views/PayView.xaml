@@ -1,0 +1,68 @@
+﻿<Window x:Class="KIOSK_LITE.Views.PayView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KIOSK_LITE.Views"
+        mc:Ignorable="d"
+        Title="PayView" Height="700" Width="800"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Background="#00264B" Foreground="white" Text="주문 내역 확인" VerticalAlignment="Center" Width="300" TextAlignment="Center" FontFamily="NanumGothic" FontSize="24" FontWeight="Bold" />
+        <ScrollViewer Grid.Row="1" ScrollViewer.PanningMode="VerticalOnly">
+            <ItemsControl ItemsSource="{Binding OrderForPay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ItemsControl}}" Margin="15 3 15 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                               
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding MENU_NM}" FontFamily="NanumGothic" FontWeight="Bold" FontSize="20" />
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center"  HorizontalAlignment="Center" Text="{Binding QTY}" FontFamily="NanumGothic" FontWeight="Bold" FontSize="20"/>
+                            <TextBlock Grid.Column="3" VerticalAlignment="Center" TextDecorations="Underline" HorizontalAlignment="Center" Text="{Binding TOT_PRICE , StringFormat=\\\{0:N0\}}" FontFamily="NanumGothic" FontWeight="Bold" FontSize="20"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" FontFamily="NanumGothic" FontWeight="Bold" FontSize="15" Text="{Binding OP_NM}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </ScrollViewer>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="총 주문금액" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Arial Black" FontSize="36" FontWeight="Bold"/>
+            <TextBlock Grid.Column="1" Margin="20 0 0 0" Text="{Binding ORDER_TOT_PRICE , StringFormat=\\\{0:N0\}}" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="NanumGothic" FontSize="36" FontWeight="Bold"/>
+        </Grid>
+        <Grid Grid.Row="3" Margin="0 0 0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource RoundButtonStyle}" Click="btnOk_Click" Content="결제" Margin="210 0 10 0" FontFamily="Arial Black" FontWeight="Bold" FontSize="20" Background="DarkGreen" Foreground="White"/>
+            <Button Grid.Column="1" Style="{StaticResource RoundButtonStyle}" Click="btnClose_Click" Content="취소" Margin="10 0 210 0" FontFamily="Arial Black" FontWeight="Bold" FontSize="20" Background="DarkRed" Foreground="White"/>
+        </Grid>
+    </Grid>
+</Window>

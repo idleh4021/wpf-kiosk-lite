@@ -1,0 +1,24 @@
+﻿<Page x:Class="KIOSK_LITE.Pages.CategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KIOSK_LITE.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CateGoryPage"
+      Initialized="Page_Initialized">
+
+    <Grid>
+        <DataGrid Name="grdCategory" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CT_CD}" Header="코드" Width="100" IsReadOnly="False"/>
+                <DataGridTextColumn Binding="{Binding CT_NM}" Header="이름" Width="100"  IsReadOnly="False"/>
+                <DataGridComboBoxColumn x:Name="cBoxUseYn" Width="80"  SelectedValueBinding="{Binding USE_YN}" DisplayMemberPath="{Binding USE_YN}" Header="사용여부" IsReadOnly="False">
+
+                </DataGridComboBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
