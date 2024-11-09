@@ -3,6 +3,8 @@
 <!--프로젝트에 대한 간단한 설명을 여기에 작성합니다.-->
 WPF로 개발된 음식점 주문 kiosk 프로그램입니다.
 
+![KioskLite](https://file.notion.so/f/f/68c582fe-3f8d-458e-8ac9-83199eed61e0/0333b6a6-1fe3-4c73-8f08-672379f4adac/%ED%82%A4%EC%98%A4%EC%8A%A4%ED%81%AC.gif?table=block&id=4314e632-2350-4728-bc82-5f5d790e3024&spaceId=68c582fe-3f8d-458e-8ac9-83199eed61e0&expirationTimestamp=1731240000000&signature=8gEi9Qc4FCf3cPadP2RPH0gblfChpOMIceAgQmwqEE0)
+
 ## 목차
 - [KioskLite](#kiosklite)
   - [목차](#목차)
